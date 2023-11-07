@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Expense Tracker</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Expense Tracker</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('add_expense') }}">Add Expense</a></li>
+        <li>
+          <a href="{{ url_for('view_expense', expense_id=expense_id) }}"
+            >View Expense</a
+          >
+        </li>
+        <li><a href="{{ url_for('add_category') }}">Add Category</a></li>
+        <li>
+          <a href="{{ url_for('view_categories', category_id=category_id) }}"
+            >View Category</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <main>{% block content %}{% endblock %}</main>
+  </body>
+</html>

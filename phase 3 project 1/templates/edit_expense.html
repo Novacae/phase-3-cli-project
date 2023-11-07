@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Edit Expense</h2>
+<form method="POST" action="{{ url_for('edit_expense', expense_id=expense.id) }}">
+    <label for="amount">Amount:</label>
+    <input type="number" name="amount" value="{{ expense.amount }}" required><br>
+    <label for="description">Description:</label>
+    <input type="text" name="description" value="{{ expense.description }}" required><br>
+    <label for="category">Category:</label>
+    <select name="category" required>
+        {% for category in categories %}
+        <option value="{{ category.id }}"
+            {% if category.id == expense.category.id %}
+                selected
+            {% endif %}
+        >{{ category.name }}</option>
+        {% endfor %}
+    </select><br>
+    <input type="submit" value="Update Expense">
+</form>
+{% endblock %}

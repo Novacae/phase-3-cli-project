@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Add Expense</h2>
+<form method="POST" action="{{ url_for('add_expense') }}">
+  <label for="amount">Amount:</label>
+  <input type="number" name="amount" required /><br />
+  <label for="description">Description:</label>
+  <input type="text" name="description" required /><br />
+  <label for="category">Category:</label>
+  <select name="category" required>
+    {% for category in categories %}
+    <option value="{{ category.id }}">{{ category.name }}</option>
+    {% endfor %}</select
+  ><br />
+  <input type="submit" value="Add Expense" />
+</form>
+{% endblock %}
